@@ -45,7 +45,7 @@ public class User {
         this.nickname = nickname;
     }
 
-    public void setActivated(boolean activated) {
+    public void isActivated(boolean activated) {
         this.activated = activated;
     }
 
