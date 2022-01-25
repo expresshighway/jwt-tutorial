@@ -39,4 +39,18 @@ public class UserDto {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
+
+    private Set<AuthorityDto> authorityDtoSet;
+
+    public static UserDto from(User user) {
+        if(user == null) return null;
+
+        return UserDto.builder()
+                .username(user.getUsername())
+                .nickname(user.getNickname())
+                .authorityDtoSet(user.getAuthorities().stream()
+                        .map(authority -> AuthorityDto.builder().authorityName(authority.getAuthorityName()).build())
+                        .collect(Collectors.toSet()))
+                .build();
+    }
 }
